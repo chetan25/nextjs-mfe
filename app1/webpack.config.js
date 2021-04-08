@@ -81,12 +81,20 @@ module.exports = {
                 type: 'var',
                 name: "app1"
             },
+            remotes: {
+                host: 'host'
+            },
             // The key name follow the ESM syntax inside Node 14
             exposes: {
                 './MyApp': "./src/my-app"
             },
             // we need to make the shared React and React-dom registered as singleton and loaded from shell
-            shared: [{ react: { singleton: true,  eager: true } }, { 'react-dom': { singleton: true,  eager: true } }],
+            shared: [
+                { react: { singleton: true,  eager: true } },
+                { 'react-dom': { singleton: true,  eager: true } },
+                { 'react-redux': { singleton: true,  eager: true } },
+                { 'redux': { singleton: true,  eager: true } }
+            ],
         }),
         // new HtmlWebpackPlugin({
         //     title: "MyApp",

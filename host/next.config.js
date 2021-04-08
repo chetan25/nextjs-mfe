@@ -10,7 +10,7 @@ module.exports = {
     const { buildId, dev, isServer, defaultLoaders, webpack } = options;
     const mfConf = {
       // mergeRuntime: true, //this is experimental,  read below
-      name: "next2",
+      name: "host",
       library: { type: config.output.libraryTarget, name: "host" },
       filename: "static/runtime/remoteEntry.js",
       remotes: {
@@ -24,8 +24,10 @@ module.exports = {
       },
       exposes: {
         // "./nav": "./components/nav",
+        // './StateManager': './store/sharedStore.tsx'
       },
-      shared: [],
+      shared: [
+      ],
     };
     // Configures ModuleFederation and other Webpack properties
     withModuleFederation(config, options, mfConf);

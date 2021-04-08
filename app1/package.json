@@ -15,8 +15,10 @@
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
     "recoil": "^0.1.2",
+    "redux": "^4.0.5",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
     "styled-components": "^5.2.1"
@@ -33,9 +35,10 @@
     "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "@types/react-redux": "^7.1.12",
+    "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "^5.1.7",
     "@types/recoil": "0.0.1",
+    "@types/redux": "^3.6.0",
     "@types/redux-logger": "^3.0.8",
     "@types/styled-components": "^5.1.7",
     "@types/webpack": "^4.41.25",
