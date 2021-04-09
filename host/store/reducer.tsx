@@ -2,7 +2,7 @@ import {createStore, AnyAction, applyMiddleware} from 'redux';
 import {MakeStore, createWrapper, Context, HYDRATE} from 'next-redux-wrapper';
 import thunkMiddleware from 'redux-thunk';
 import { CHANGE_USER } from './action';
-import {userStateSubscriber} from './sharedStore';
+import { BehaviorSubject } from 'rxjs';
 
 export interface UserState {
     name?: string;
@@ -42,6 +42,8 @@ const bindMiddleware = (middleware: any[]) => {
  }
 
 
+const userStateSubscriber = new BehaviorSubject(initialUser);
+
 /**
  * 
  * Each time when pages that have getStaticProps or getServerSideProps are opened by user the HYDRATE action
@@ -58,7 +60,7 @@ export const hostReducer = (state = initialState, action: AnyAction) => {
           // preserve any state value on client side navigation
          return nextState;
        case CHANGE_USER:
-
+         console.log('fired');
          // once state is updated we need to update all subscribers
          userStateSubscriber.next(action.payload);
            return {
@@ -71,8 +73,24 @@ export const hostReducer = (state = initialState, action: AnyAction) => {
 }
 
 
+const store =  createStore(hostReducer, bindMiddleware([thunkMiddleware]));
 // create a makeStore function
-export const makeStore: MakeStore<InitialHostState> = (context: Context) => createStore(hostReducer, bindMiddleware([thunkMiddleware]));
+export const makeStore: MakeStore<InitialHostState> = (context: Context) => store;
 
 // export an assembled wrapper
 export const wrapper = createWrapper<InitialHostState>(makeStore, {debug: true});
+
+export const updateUser = (user: UserState) => {
+   console.log(user, 'passed-user');
+   return store.dispatch({
+       type: CHANGE_USER,
+       payload: user
+   });
+}
+
+declare const window: any;
+
+if (typeof window !== 'undefined') {
+    window!.updateUser = updateUser;
+    window!.userStateSubscriber = userStateSubscriber;
+}

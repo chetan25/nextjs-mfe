@@ -25,4 +25,23 @@
 ### Micro App1 
 - Is bootstrapped with simple React and uses Webpack Module federation plugin, to expose the app.
 - It has it's own internal routing, which handles, all routes from '/about'.
+- It exposes the main app which is then render in Host app.
 
+
+### Data Flow
+We have a common state which is hosted in Host app, that is shared across different micro apps. The micro apps can read and also write the state, but the logic to react to state change is in Host app.
+
+#### Host App 
+- Has a store that has User state and Host state.
+- User state is a shared state between Host and micro Apps.
+- Host uses Observables and an update function to share state.
+- Observables is used to read state in micro apps and the update function is use to update state from micro apps.
+- These two things are exposed to global window object from Host app, since I was unable to make the Next app work as bi-directional and expose them.
+
+#### App1 
+- It reads the state using Observable and keeps a local copy of it.
+- Observables helps to keep the state in sync.
+- It updates the state using the global exposed function.
+  
+> Only using Observables to listen to events and not pushing any changes to it from consuming apps.Only the Host app pushes changes to it in the Reducer action, so that all micro apps that are subscribing to it gets the update.
+ 

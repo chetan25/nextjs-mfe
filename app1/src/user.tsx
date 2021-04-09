@@ -13,22 +13,20 @@ const User = () => {
     const [loading, setLoading] = useState(false);
 
     const updateUser = () => {
-        // To be implemented
-        
-        // setLoading(true);
-        // let newUser: UserState  = {
-        //     id: 'host',
-        //     name: 'Host'
-        // }
-        // if (user?.name === 'Host') {
-        //     newUser = {
-        //         id: 'teken',
-        //         name: 'Teken'
-        //     }
-        // }
+        setLoading(true);
+        let newUser: UserState  = {
+            id: 'host',
+            name: 'Host'
+        }
+        if (user?.name === 'Host') {
+            newUser = {
+                id: 'teken',
+                name: 'Teken'
+            }
+        }
 
-        // window.updateUser(newUser);
-        // setLoading(false);
+        window.updateUser(newUser);
+        setLoading(false);
     };
 
     useEffect(() => {

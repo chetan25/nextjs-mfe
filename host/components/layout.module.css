@@ -1,9 +1,9 @@
 .header {
     min-height: 50px;
     padding: 10px;
-    display: flex;
-    justify-content: center;
     background: aqua;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
 }
 
 .title {
