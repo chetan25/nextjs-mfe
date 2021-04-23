@@ -1,7 +1,7 @@
 ---
 title: Micro Frontend Apps implementation with N and ext Js and Webpack Module Federation Plugin.
-excerpt: This is a mono repo that has examples of Module Federation with different javascript frameworks.
-Tools: ['Next Js', 'Javascript', 'Webapck', 'Typescript']
+excerpt: This is a App built with Next js as the container app and other React micro apps that gets injected into the container.
+Tools: ['Next Js', 'React', 'Javascript', 'Webapck', 'Typescript']
 ---
 
 # Micro Frontend Apps implementation with Next Js
