@@ -1,5 +1,5 @@
 ---
-title: Micro Frontend Apps implementation with N and ext Js and Webpack Module Federation Plugin.
+title: Next Js and Webpack Module Federation Plugin.
 excerpt: This is a App built with Next js as the container app and other React micro apps that gets injected into the container.
 Tools: ['Next Js', 'React', 'Javascript', 'Webapck', 'Typescript']
 ---
